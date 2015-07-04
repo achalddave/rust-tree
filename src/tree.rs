@@ -8,7 +8,7 @@ pub fn tree(path: &str) -> Result<(), io::Error>{
     return print_dir_recursive(path, 0);
 }
 
-fn print_dir_recursive(path : &str, indent_level : usize)
+fn print_dir_recursive(path: &str, indent_level : usize)
         -> Result<(), io::Error>{
     let indent : String = iter::repeat("   |").take(indent_level).collect();
 
@@ -19,7 +19,7 @@ fn print_dir_recursive(path : &str, indent_level : usize)
         let entry_name = try!(entry).path();
         let entry_name = entry_name.to_str().unwrap();
         println!("{}- {}", indent, entry_name);
-        print_dir_recursive(entry_name, indent_level + 1);
+        try!(print_dir_recursive(entry_name, indent_level + 1));
     }
     return Ok(());
 }

@@ -4,8 +4,8 @@ use std::iter;
 
 // Specify indent size?
 
-pub fn tree() -> Result<(), io::Error>{
-    return print_dir_recursive(".", 0);
+pub fn tree(path: &str) -> Result<(), io::Error>{
+    return print_dir_recursive(path, 0);
 }
 
 fn print_dir_recursive(path : &str, indent_level : usize)
